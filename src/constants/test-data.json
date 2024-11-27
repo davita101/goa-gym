@@ -1,0 +1,252 @@
+[
+    {
+        "studentName": "Student1 გრძელიშვილი",
+        "studentWeight": 87,
+        "studentPushUp": 29
+    },
+    {
+        "studentName": "Student2",
+        "studentWeight": 78,
+        "studentPushUp": 53
+    },
+    {
+        "studentName": "Student3",
+        "studentWeight": 63,
+        "studentPushUp": 42
+    },
+    {
+        "studentName": "Student4",
+        "studentWeight": 100,
+        "studentPushUp": 21
+    },
+    {
+        "studentName": "Student5",
+        "studentWeight": 74,
+        "studentPushUp": 36
+    },
+    {
+        "studentName": "Student6",
+        "studentWeight": 95,
+        "studentPushUp": 18
+    },
+    {
+        "studentName": "Student7",
+        "studentWeight": 54,
+        "studentPushUp": 39
+    },
+    {
+        "studentName": "Student8",
+        "studentWeight": 91,
+        "studentPushUp": 47
+    },
+    {
+        "studentName": "Student9",
+        "studentWeight": 62,
+        "studentPushUp": 32
+    },
+    {
+        "studentName": "Student10",
+        "studentWeight": 86,
+        "studentPushUp": 24
+    },
+    {
+        "studentName": "Student11",
+        "studentWeight": 45,
+        "studentPushUp": 41
+    },
+    {
+        "studentName": "Student12",
+        "studentWeight": 76,
+        "studentPushUp": 33
+    },
+    {
+        "studentName": "Student13",
+        "studentWeight": 58,
+        "studentPushUp": 16
+    },
+    {
+        "studentName": "Student14",
+        "studentWeight": 88,
+        "studentPushUp": 44
+    },
+    {
+        "studentName": "Student15",
+        "studentWeight": 72,
+        "studentPushUp": 35
+    },
+    {
+        "studentName": "Student16",
+        "studentWeight": 96,
+        "studentPushUp": 38
+    },
+    {
+        "studentName": "Student17",
+        "studentWeight": 67,
+        "studentPushUp": 30
+    },
+    {
+        "studentName": "Student18",
+        "studentWeight": 51,
+        "studentPushUp": 27
+    },
+    {
+        "studentName": "Student19",
+        "studentWeight": 103,
+        "studentPushUp": 50
+    },
+    {
+        "studentName": "Student20",
+        "studentWeight": 84,
+        "studentPushUp": 40
+    },
+    {
+        "studentName": "Student21",
+        "studentWeight": 65,
+        "studentPushUp": 20
+    },
+    {
+        "studentName": "Student22",
+        "studentWeight": 92,
+        "studentPushUp": 26
+    },
+    {
+        "studentName": "Student23",
+        "studentWeight": 79,
+        "studentPushUp": 31
+    },
+    {
+        "studentName": "Student24",
+        "studentWeight": 48,
+        "studentPushUp": 28
+    },
+    {
+        "studentName": "Student25",
+        "studentWeight": 61,
+        "studentPushUp": 25
+    },
+    {
+        "studentName": "Student26",
+        "studentWeight": 71,
+        "studentPushUp": 34
+    },
+    {
+        "studentName": "Student27",
+        "studentWeight": 81,
+        "studentPushUp": 46
+    },
+    {
+        "studentName": "Student28",
+        "studentWeight": 77,
+        "studentPushUp": 49
+    },
+    {
+        "studentName": "Student29",
+        "studentWeight": 89,
+        "studentPushUp": 23
+    },
+    {
+        "studentName": "Student30",
+        "studentWeight": 99,
+        "studentPushUp": 37
+    },
+    {
+        "studentName": "Student31",
+        "studentWeight": 53,
+        "studentPushUp": 19
+    },
+    {
+        "studentName": "Student32",
+        "studentWeight": 85,
+        "studentPushUp": 43
+    },
+    {
+        "studentName": "Student33",
+        "studentWeight": 69,
+        "studentPushUp": 22
+    },
+    {
+        "studentName": "Student34",
+        "studentWeight": 66,
+        "studentPushUp": 48
+    },
+    {
+        "studentName": "Student35",
+        "studentWeight": 56,
+        "studentPushUp": 45
+    },
+    {
+        "studentName": "Student36",
+        "studentWeight": 101,
+        "studentPushUp": 52
+    },
+    {
+        "studentName": "Student37",
+        "studentWeight": 60,
+        "studentPushUp": 17
+    },
+    {
+        "studentName": "Student38",
+        "studentWeight": 73,
+        "studentPushUp": 14
+    },
+    {
+        "studentName": "Student39",
+        "studentWeight": 83,
+        "studentPushUp": 42
+    },
+    {
+        "studentName": "Student40",
+        "studentWeight": 68,
+        "studentPushUp": 15
+    },
+    {
+        "studentName": "Student41",
+        "studentWeight": 82,
+        "studentPushUp": 30
+    },
+    {
+        "studentName": "Student42",
+        "studentWeight": 75,
+        "studentPushUp": 39
+    },
+    {
+        "studentName": "Student43",
+        "studentWeight": 64,
+        "studentPushUp": 33
+    },
+    {
+        "studentName": "Student44",
+        "studentWeight": 97,
+        "studentPushUp": 50
+    },
+    {
+        "studentName": "Student45",
+        "studentWeight": 55,
+        "studentPushUp": 24
+    },
+    {
+        "studentName": "Student46",
+        "studentWeight": 90,
+        "studentPushUp": 28
+    },
+    {
+        "studentName": "Student47",
+        "studentWeight": 80,
+        "studentPushUp": 31
+    },
+    {
+        "studentName": "Student48",
+        "studentWeight": 98,
+        "studentPushUp": 21
+    },
+    {
+        "studentName": "Student49",
+        "studentWeight": 49,
+        "studentPushUp": 34
+    },
+    {
+        "studentName": "Student50",
+        "studentWeight": 59,
+        "studentPushUp": 25
+    }
+]
