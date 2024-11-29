@@ -17,6 +17,8 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { Button, Card, FormControl, FormHelperText, TableHead, TextField } from '@mui/material';
 import { Edit, FitnessCenter, MonitorWeight, PendingActions, SportsScore } from '@mui/icons-material';
+import DialogPopup from './DialogPopup';
+import AddDialog from './AddDialog';
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -79,8 +81,8 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, fat, score) {
-    return { name, calories, fat, score };
+function createData(studentName, studentWeight, studentPushUp, score) {
+    return { studentName, studentWeight, studentPushUp, score };
 }
 
 
@@ -88,25 +90,23 @@ function createData(name, calories, fat, score) {
 export default function CustomPaginationActionsTable() {
 
     // ! forms
-
     const [rows, setRow] = React.useState([])
     const [copyRows, setCopyRow] = React.useState([...rows])
     const [name, setName] = React.useState('');
-    const [error, setError] = React.useState('');
-    // Load students from localStorage when component mounts
+    const [isPopup, setIsPopup] = React.useState(false);
+    const [editData, setEditData] = React.useState([])
+    const [studentIndex, setStudentIndex] = React.useState(0)
+
     React.useEffect(() => {
         const students = JSON.parse(localStorage.getItem("All students")) || [];
         const student = students.map(item => createData(item.studentName, item.studentWeight, item.studentPushUp, (item.studentPushUp * item.studentWeight) / 20)).sort((a, b) => (a.score > b.score ? -1 : 1))
         setRow(student)
         setCopyRow(student)
     }, []);
-    console.log(name)
 
-    // Sort students by score
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-    // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -122,29 +122,27 @@ export default function CustomPaginationActionsTable() {
     // ! forms
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (!name) {
-
-            setError('Student name or surname are required!');
-        }
-        else {
-            setError('');
-            console.log({ name });
-        }
-
         if (name.length > 1) {
-
-            const formValue = rows.filter(item => item.name.includes(name))
+            const formValue = copyRows.filter(item => item.studentName.includes(name))
             setRow(formValue)
         } else {
             setRow(copyRows)
         }
-
     };
+
+    const handleFormEdit = (row, index) => {
+        setStudentIndex(index)
+        setEditData(row)
+        setIsPopup(true)
+    }
 
 
     return (
         <>
-            <Card className='container py-4 mt-[6rem] border-blue-300' >
+
+            <AddDialog/>
+            <DialogPopup studentIndex={studentIndex} isPopup={isPopup} setIsPopup={setIsPopup} data={editData} allStudent={rows} setAllStudent={setRow} editValue={setName} />
+            <Card className='container py-4 mt-[6rem]'  >
                 <form onSubmit={handleSubmit}>
                     <TextField
                         color='info'
@@ -154,12 +152,6 @@ export default function CustomPaginationActionsTable() {
                         fullWidth
                         margin="normal"
                     />
-                    <FormControl
-                        error={Boolean(error)}
-                        margin="normal">
-                        {error && <FormHelperText>{error}</FormHelperText>}
-                    </FormControl>
-
                     <Button
                         type="submit"
                         variant="outlined"
@@ -169,7 +161,7 @@ export default function CustomPaginationActionsTable() {
                 </form>
             </Card>
 
-            <TableContainer component={Paper} className="container h-full mt-3 ">
+            <TableContainer component={Paper} className="container h-full mt-4 ">
                 <Table aria-label=" pagination table">
 
                     <TableHead>
@@ -185,22 +177,22 @@ export default function CustomPaginationActionsTable() {
                         {(rowsPerPage > 0
                             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             : rows
-                        ).map((row) => (
-                            <TableRow key={row.name} >
+                        ).map((row, key) => (
+                            <TableRow key={`${row.name}_${key}`} >
                                 <TableCell component="th" scope="row">
-                                    {row.name}
+                                    {row.studentName}
                                 </TableCell>
-                                <TableCell style={{ width: 160, color: "blue" }} align="right">
-                                    {row.calories}
+                                <TableCell style={{ width: 160, }} align="right">
+                                    {row.studentWeight}
                                 </TableCell>
                                 <TableCell style={{ width: 160 }} align="right">
-                                    {row.fat}
+                                    {row.studentPushUp}
                                 </TableCell>
                                 <TableCell style={{ width: 160 }} align="right">
                                     {row.score}
                                 </TableCell>
-                                <TableCell style={{ width: 160 }} align="right">
-                                    <Edit className='cursor-pointer'/>
+                                <TableCell onClick={() => handleFormEdit(row, key)} style={{ width: 160 }} align="right">
+                                    <Edit className='cursor-pointer' />
                                 </TableCell>
                             </TableRow>
                         ))}
