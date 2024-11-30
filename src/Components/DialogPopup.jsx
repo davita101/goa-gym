@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import { FormControl, TextField } from '@mui/material'
 
-export default function DialogPopup({ isPopup, setIsPopup, data, setAllStudent, editValue, studentIndex }) {
+export default function DialogPopup({ search, isPopup, setIsPopup, data, setAllStudent, editValue, studentIndex }) {
   const [change, setChange] = React.useState({
     studentName: '',
     studentWeight: '',
@@ -84,7 +84,7 @@ export default function DialogPopup({ isPopup, setIsPopup, data, setAllStudent, 
         <DialogTitle id="alert-dialog-title">{"Edit Student"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <FormControl required className="flex gap-2 w-[400px]">
+            <FormControl required className="flex gap-2 sm:w-[400px] w-full">
               <TextField
                 label="Name"
                 variant="standard"
@@ -118,9 +118,13 @@ export default function DialogPopup({ isPopup, setIsPopup, data, setAllStudent, 
           <Button variant="contained" color="error" onClick={handleClose} autoFocus>
             Cancel
           </Button>
-          <Button variant="contained" color="warning" onClick={handleDelete} autoFocus>
+          {search.length == 0 ? (<Button variant="contained" color="warning" onClick={handleDelete} autoFocus>
             Delete
-          </Button>
+          </Button>) :
+            (<Button variant="contained" color="warning" autoFocus disabled>
+              Delete
+            </Button>)
+          }
         </DialogActions>
       </Dialog>
     </React.Fragment>

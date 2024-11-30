@@ -7,15 +7,21 @@ export default {
   ],
   theme: {
     container: {
-      padding: '1rem',
+      padding: "1rem",
       center: true,
       screens: {
         "2xl": "1400px", // Limit container width for 2xl breakpoint
       },
     },
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+      animation: {
+        border: 'border 4s ease infinite',
+      },
+      keyframes: {
+        border: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
       },
     },
   },

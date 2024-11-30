@@ -11,9 +11,6 @@ const Navbar = () => {
                     <Link to="/members" className="hover:underline">
                         Members List
                     </Link>
-                    <Link to="/winner" className="hover:underline">
-                        Winner Page
-                    </Link>
                 </div>
             </nav>
         </div>
