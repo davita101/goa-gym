@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  plugins: [react()],
   build: {
-    chunkSizeWarningLimit: 1000, // Default is 500, you can increase this to suppress the warning
+    outDir: 'dist', // Make sure this matches your deployment configuration
   },
-})
+});
