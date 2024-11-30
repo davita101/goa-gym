@@ -32,7 +32,7 @@ export default function AddDialog({ isPopup, setIsPopup, setAllStudent }) {
     }
 
     const handleSave = () => {
-        if (!change.studentName || !change.studentWeight || !change.studentPushUp) {
+        if (!change.studentName || !change.studentWeight) {
             alert("Please fill out all fields!")
             return
         }

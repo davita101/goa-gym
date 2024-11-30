@@ -31,7 +31,7 @@ export default function DialogPopup({ search, isPopup, setIsPopup, data, setAllS
   }
 
   const handleSave = () => {
-    if (!change.studentName || !change.studentWeight || !change.studentPushUp || !change.score) {
+    if (!change.studentName || !change.studentWeight) {
       alert("Please fill out all fields!")
       return
     }
