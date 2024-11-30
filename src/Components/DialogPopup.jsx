@@ -3,7 +3,6 @@ import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import { FormControl, TextField } from '@mui/material'
 
@@ -21,7 +20,7 @@ export default function DialogPopup({ search, isPopup, setIsPopup, data, setAllS
     const students = JSON.parse(localStorage.getItem("All students")) || [];
     setChange({ ...data })
     setEdit(students)
-  }, [data,])
+  }, [data])
 
   const handleClickOpen = () => {
     setIsPopup(true)
@@ -37,6 +36,11 @@ export default function DialogPopup({ search, isPopup, setIsPopup, data, setAllS
       return
     }
     change.score = (change.studentPushUp * change.studentWeight) / 20
+    const isNameChange = edit.filter(item => change.studentName === item.studentName)
+
+    if(isNameChange.length  !== 1){
+      window.location.reload()
+    }
 
     const updatedStudents = edit.map((student) => {
       if (student.studentName === data.studentName) {
@@ -83,33 +87,31 @@ export default function DialogPopup({ search, isPopup, setIsPopup, data, setAllS
       >
         <DialogTitle id="alert-dialog-title">{"Edit Student"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            <FormControl required className="flex gap-2 sm:w-[400px] w-full">
-              <TextField
-                label="Name"
-                variant="standard"
-                value={change.studentName || ''}
-                onChange={(e) => handleChange("studentName", e.target.value)}
-                sx={{ input: { textAlign: "center" } }}
-              />
-              <TextField
-                label="Weight"
-                variant="standard"
-                type="number"
-                value={change.studentWeight || ''}
-                onChange={(e) => handleChange("studentWeight", e.target.value)}
-                sx={{ input: { textAlign: "center" } }}
-              />
-              <TextField
-                label="Push up"
-                variant="standard"
-                type="number"
-                value={change.studentPushUp || ''}
-                onChange={(e) => handleChange("studentPushUp", e.target.value)}
-                sx={{ input: { textAlign: "center" } }}
-              />
-            </FormControl>
-          </DialogContentText>
+          <FormControl required className="flex gap-2 sm:w-[400px] w-full">
+            <TextField
+              label="Name"
+              variant="standard"
+              value={change.studentName || ''}
+              onChange={(e) => handleChange("studentName", e.target.value)}
+              sx={{ input: { textAlign: "center" } }}
+            />
+            <TextField
+              label="Weight"
+              variant="standard"
+              type="number"
+              value={change.studentWeight || ''}
+              onChange={(e) => handleChange("studentWeight", e.target.value)}
+              sx={{ input: { textAlign: "center" } }}
+            />
+            <TextField
+              label="Push up"
+              variant="standard"
+              type="number"
+              value={change.studentPushUp || ''}
+              onChange={(e) => handleChange("studentPushUp", e.target.value)}
+              sx={{ input: { textAlign: "center" } }}
+            />
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button variant="contained" onClick={handleSave}>
@@ -121,7 +123,7 @@ export default function DialogPopup({ search, isPopup, setIsPopup, data, setAllS
           {search.length == 0 ? (<Button variant="contained" color="warning" onClick={handleDelete} autoFocus>
             Delete
           </Button>) :
-            (<Button variant="contained" color="warning" autoFocus disabled>
+            (<Button variant="contained" color="warning" autoFocus onClick={handleDelete} disabled>
               Delete
             </Button>)
           }

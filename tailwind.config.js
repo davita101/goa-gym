@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       animation: {
-        border: 'border 4s ease infinite',
+        'spin': 'spin 3s linear infinite', // Slow down the spin
       },
       keyframes: {
         border: {

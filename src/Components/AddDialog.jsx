@@ -3,56 +3,105 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
+import { FormControl, TextField } from '@mui/material';
 
-export default function AddDialog() {
-    const [open, setOpen] = React.useState(false);
-    const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+export default function AddDialog({ isPopup, setIsPopup, setAllStudent }) {
+
+
+    const [change, setChange] = React.useState({
+        studentName: '',
+        studentWeight: '',
+        studentPushUp: '',
+        score: '',
+    })
+    const [edit, setEdit] = React.useState('')
+
+    React.useEffect(() => {
+        const students = JSON.parse(localStorage.getItem("All students")) || [];
+        setChange({ ...students })
+        setEdit(students)
+    }, [])
 
     const handleClickOpen = () => {
-        setOpen(true);
-    };
+        setIsPopup(true)
+    }
 
     const handleClose = () => {
-        setOpen(false);
-    };
+        setIsPopup(false)
+    }
 
+    const handleSave = () => {
+        if (!change.studentName || !change.studentWeight || !change.studentPushUp) {
+            alert("Please fill out all fields!")
+            return
+        }
+        change.score = (change.studentPushUp * change.studentWeight) / 20
+        const updateStudent = [...edit]
+        updateStudent.push(change)
+        const sortedStudents = updateStudent.sort((a, b) => b.score - a.score)
+
+        localStorage.setItem("All students", JSON.stringify(sortedStudents))
+        setAllStudent(sortedStudents)
+        setIsPopup(false)
+        window.location.reload()
+    }
+
+    const handleChange = (item, value) => {
+        setChange((prevState) => ({
+            ...prevState,
+            [item]: value,
+        }))
+    }
     return (
         <React.Fragment>
-            <div>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Add Student
-                </Button>
-                <Dialog
-                    fullScreen={fullScreen}
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="responsive-dialog-title"
-                >
-                    <DialogTitle id="responsive-dialog-title">
-                        {"Use Google's location service?"}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            Let Google help apps determine location. This means sending anonymous
-                            location data to Google, even when no apps are running.
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button autoFocus onClick={handleClose}>
-                            Disagree
-                        </Button>
-                        <Button onClick={handleClose} autoFocus>
-                            Agree
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </div>
+            <Button variant="contained" onClick={handleClickOpen} className='z-[9]'>
+                Add student
+            </Button>
+            <Dialog
+                open={isPopup}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">{"Edit Student"}</DialogTitle>
+                <DialogContent>
+                    <FormControl required className="flex gap-2 sm:w-[400px] w-full">
+                        <TextField
+                            label="Name"
+                            variant="standard"
+                            value={change.studentName || ''}
+                            onChange={(e) => handleChange("studentName", e.target.value)}
+                            sx={{ input: { textAlign: "center" } }}
+                        />
+                        <TextField
+                            label="Weight"
+                            variant="standard"
+                            type="number"
+                            value={change.studentWeight || ''}
+                            onChange={(e) => handleChange("studentWeight", e.target.value)}
+                            sx={{ input: { textAlign: "center" } }}
+                        />
+                        <TextField
+                            label="Push up"
+                            variant="standard"
+                            type="number"
+                            value={change.studentPushUp || ''}
+                            onChange={(e) => handleChange("studentPushUp", e.target.value)}
+                            sx={{ input: { textAlign: "center" } }}
+                        />
+                    </FormControl>
+                </DialogContent>
+                <DialogActions>
+                    <Button type='submit' variant="contained" onClick={handleSave}>
+                        Save
+                    </Button>
+                    <Button type='submit' variant="contained" color="error" onClick={handleClose} autoFocus>
+                        Cancel
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </React.Fragment>
 
-    );
+    )
 }

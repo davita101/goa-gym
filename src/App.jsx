@@ -10,7 +10,7 @@ const App = () => {
                 <Navbar />
             </header>
 
-            <main className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full min-h-screen "> {/* Add padding to avoid overlap with Navbar */}
+            <main className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full min-h-screen overflow-hidden"> {/* Add padding to avoid overlap with Navbar */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/members" element={<Winner />} />
