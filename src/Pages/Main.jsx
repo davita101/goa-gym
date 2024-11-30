@@ -21,11 +21,11 @@ export default function Main() {
     if (start) {
       setTimeout(() => {
         setCelebrate(true)
-      }, 12000);
+      }, 13000);
 
       gsap.to(bronze.current, {
         keyframes: [
-          { bottom: 0, rotate: 0, left: "50%", right: "50%", },
+          { delay: 1,bottom: 0, rotate: 0, left: "50%", right: "50%", },
           { scale: 1.8, fontSize: "25px", },
           { left: "0", right: "50%", bottom: "-10rem", scale: 1, fontSize: "20px", delay: 1 },
           {
@@ -46,7 +46,7 @@ export default function Main() {
       })
       gsap.to(silver.current, {
         keyframes: [
-          { delay: 4, bottom: "-10rem", rotate: 0, left: "50%", right: "50%", },
+          { delay: 5, bottom: "-10rem", rotate: 0, left: "50%", right: "50%", },
           { scale: 1.8, fontSize: "25px", },
           { left: "50%", right: "0", bottom: "-10rem", scale: 1, fontSize: "20px", delay: 1 },
           {
@@ -67,9 +67,9 @@ export default function Main() {
       })
       gsap.to(gold.current, {
         keyframes: [
-          { delay: 9, bottom: "-10rem", rotate: 0, left: "50%", right: "50%", },
+          { delay: 10, bottom: "-10rem", rotate: 0, left: "50%", right: "50%", },
           { scale: 1.8, fontSize: "25px", },
-          { left: "50%", right: "50%", bottom: "-10rem", scale: 1, fontSize: "20px", delay: 1 },
+          { left: "50%", right: "50%", bottom: "-4rem", scale: 1, fontSize: "20px", delay: 1 },
           {
             rotate: -5, // Initial rotation
             x: 40, // Start position X
