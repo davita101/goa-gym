@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import ReactConfetti from "react-confetti"
 import settingsLogo from "../../public/settings.svg"
 import { Link } from "react-router-dom"
-import celebrationSound from "../assets/sounds/celebration-sound.mp3"
-import useSound from "use-sound"
+
 
 export default function Main() {
   const bronze = useRef(null)
@@ -14,7 +13,6 @@ export default function Main() {
   const [celebrate, setCelebrate] = useState(false)
   const [start, setStart] = useState(false)
   const [student, setStudents] = useState(false)
-  const [playCelebrationSound] = useSound(celebrationSound);
 
 
   useEffect(() => {
@@ -95,7 +93,6 @@ export default function Main() {
   const handleStart = () => {
     localStorage.setItem("Ceremony is start", JSON.stringify("true"))
     setStart(true)
-    playCelebrationSound()
   }
   return (
     <>
