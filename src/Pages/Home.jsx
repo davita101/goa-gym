@@ -1,4 +1,4 @@
-import { Box, Button, Card } from '@mui/material';
+import { Box, Button, Card, Fade } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, XAxis, YAxis, Tooltip, LabelList } from 'recharts';
@@ -34,7 +34,7 @@ const Home = () => {
                             </YAxis>
                             <Tooltip />
                             <Legend />
-                            <Bar dataKey="score" radius={[4, 4, 0, 0]} name="Score" >
+                            <Bar dataKey="score" fill='#1979e6' radius={[4, 4, 0, 0]} name="Score" >
                                 <LabelList dataKey="score" position="top" />
                             </Bar>
                         </BarChart>
@@ -42,20 +42,20 @@ const Home = () => {
                 </Card>
                 ) : (
                     <div className='w-full container flex justify-center items-center h-[90vh]'>
-                        <Card className='w-full p-4 flex  flex-col gap-4'>
-                            <p className='text-[30px] font-bold'>No data please fill blanks</p>
-                            <div  className='flex justify-center transition-all animate-spin duration-1000' >
-                                <img src={settingsLogo}  width={"500px"} alt="settings logo" />
-                            </div>
-                            <Link to={"/members"}>
-                                <Button variant='contained' className='w-full'>
-                                Go to page
-                                </Button>
-                            </Link> 
-                        </Card>
+                        <Fade in={true} style={{transitionDelay:"100ms"}}>
+                            <Card className='w-full p-4 flex  flex-col gap-4'>
+                                <p className='text-[30px] font-bold'>No data please fill blanks</p>
+                                <div className='flex justify-center transition-all animate-spin duration-1000' >
+                                    <img src={settingsLogo} width={"500px"} alt="settings logo" />
+                                </div>
+                                <Link to={"/members"}>
+                                    <Button variant='contained' className='w-full'>
+                                        Go to page
+                                    </Button>
+                                </Link>
+                            </Card>
+                        </Fade>
                     </div>
-
-
                 )
 
             }

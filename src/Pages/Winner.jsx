@@ -15,7 +15,7 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
-import { Button, Card, Slide, TableHead, TextField } from '@mui/material';
+import { Button, Card, Fade, Slide, TableHead, TextField } from '@mui/material';
 import { Edit, FitnessCenter, MonitorWeight, PendingActions, SportsScore } from '@mui/icons-material';
 import DialogPopup from '../Components/DialogPopup';
 import AddDialog from '../Components/AddDialog';
@@ -149,11 +149,7 @@ export default function CustomPaginationActionsTable() {
             </div>
             <Box>
                 {/* Conditionally applies the timeout prop to change the entry speed. */}
-                <Slide
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...({ timeout: 400 })}
-                    direction='down'
+                <div
                 >
                     <Card className='relative  p-2 mt-[3rem]' sx={{ boxShadow: 5 }}>
                         <div className='flex justify-between'>
@@ -180,12 +176,10 @@ export default function CustomPaginationActionsTable() {
                             </Button>
                         </form>
                     </Card >
-                </Slide>
-                <Slide
+                </div>
+                <Fade
+
                     in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...({ timeout: 400 })}
-                    direction='up'
                 >
                     <div>
                         {rows.length > 0 ? (<TableContainer component={Paper}
@@ -259,7 +253,7 @@ export default function CustomPaginationActionsTable() {
                                 </div>
                             )}
                     </div>
-                </Slide >
+                </Fade>
             </Box>
         </div>
 
