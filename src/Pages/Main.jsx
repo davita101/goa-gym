@@ -104,22 +104,22 @@ export default function Main() {
               <div className="h-screen max-w-[900px] mx-auto flex justify-center items-end relative">
                 {/* //! silver */}
                 <div ref={silver} className=" z-[2] absolute bottom-[-50rem] left-[50%] right-[50%]  flex flex-col items-center">
-                  <h2 className=" text-xl mb-4 font-bold text-center text-white">{student[2].studentName}</h2>
+                  <h2 className=" text-xl mb-4 font-bold text-center text-white">{student[1].studentName}</h2>
                   <Card sx={{ bgcolor: "#1979e6", boxShadow: 5 }} className="flex items-center flex-col rounded-t-[5px] p-2 w-[300px] h-[600px]">
                     <span className="text-[5rem]">🥈</span>
                     <div>
-                      <p className=" font-bold text-white text-3xl">{student[2].score}</p>
+                      <p className=" font-bold text-white text-3xl">{student[1].score}</p>
                     </div>
                   </Card>
                 </div>
 
                 {/* //! bronze */}
                 <div ref={bronze} className=" absolute bottom-[-50rem] left-[50%] right-[50%]  flex-col items-center flex">
-                  <h2 className="font-bold mb-4 text-center text-2xl text-white">{student[1].studentName}</h2>
+                  <h2 className="font-bold mb-4 text-center text-2xl text-white">{student[2].studentName}</h2>
                   <Card sx={{ bgcolor: "#1979e6", boxShadow: 5 }} className="flex items-center flex-col rounded-t-[5px] p-2 w-[300px] h-[500px]">
                     <span className="text-[5rem]">🥉</span>
                     <div>
-                      <p className=" font-bold text-white text-3xl">{student[1].score}</p>
+                      <p className=" font-bold text-white text-3xl">{student[2].score}</p>
                     </div>
                   </Card>
                 </div>

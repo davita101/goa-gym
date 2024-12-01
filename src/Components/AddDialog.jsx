@@ -33,19 +33,26 @@ export default function AddDialog({ isPopup, setIsPopup, setAllStudent }) {
 
     const handleSave = () => {
         if (!change.studentName || !change.studentWeight) {
-            alert("Please fill out all fields!")
-            return
+            alert("Please fill out all fields!");
+            return;
         }
-        change.score = (change.studentPushUp * change.studentWeight) / 20
-        const updateStudent = [...edit]
-        updateStudent.push(change)
-        const sortedStudents = updateStudent.sort((a, b) => b.score - a.score)
-
-        localStorage.setItem("All students", JSON.stringify(sortedStudents))
-        setAllStudent(sortedStudents)
-        setIsPopup(false)
+        const newScore = (change.studentPushUp * change.studentWeight) / 20;
+        const newStudent = { 
+            studentName: change.studentName, 
+            studentWeight: change.studentWeight, 
+            studentPushUp: change.studentPushUp, 
+            score: newScore 
+        };
+        
+        const updatedStudents = [...edit, newStudent];
+        const sortedStudents = updatedStudents.sort((a, b) => b.score - a.score);
         window.location.reload()
-    }
+        localStorage.setItem("All students", JSON.stringify(sortedStudents));
+        setAllStudent(sortedStudents);
+        setEdit(sortedStudents); // Update 'edit' state for consistency
+        setIsPopup(false);
+    };
+    
 
     const handleChange = (item, value) => {
         setChange((prevState) => ({
