@@ -190,11 +190,13 @@ export default function CustomPaginationActionsTable() {
                             <Table aria-label=" pagination table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell style={{ fontWeight: "bolder" }}>Name</TableCell>
-                                        <TableCell style={{ fontWeight: "bolder" }} align="right"><span>Weight</span><MonitorWeight /></TableCell>
-                                        <TableCell style={{ fontWeight: "bolder" }} align="right"><span>Pushups</span> <FitnessCenter /></TableCell>
-                                        <TableCell style={{ fontWeight: "bolder" }} align="right"><span>Score</span><SportsScore /></TableCell>
-                                        <TableCell style={{ fontWeight: "bolder" }} align="right"><span>Action</span><PendingActions /></TableCell>
+                                        <TableCell style={{ fontWeight: "bolder" }} align="center">Index</TableCell>
+                                        <TableCell style={{ fontWeight: "bolder" }} align="center">Name</TableCell>
+                                        <TableCell style={{ fontWeight: "bolder" }} align="center"><span>Weight</span><MonitorWeight /></TableCell>
+                                        <TableCell style={{ fontWeight: "bolder" }} align="center"><span>Pushups</span> <FitnessCenter /></TableCell>
+                                        <TableCell style={{ fontWeight: "bolder" }} align="center"><span>Score</span><SportsScore /></TableCell>
+                                        <TableCell style={{ fontWeight: "bolder" }} align="center"><span>Action</span><PendingActions /></TableCell>
+                                        <TableCell style={{ fontWeight: "bolder" }} align="center"></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -203,26 +205,32 @@ export default function CustomPaginationActionsTable() {
                                         : rows
                                     ).map((row, key) => (
                                         <TableRow key={`${row.name}_${key}`} >
-                                            <TableCell component="th" scope="row">
+                                            <TableCell component="th" scope="row" align='center'>
+                                                {key + 1}
+                                            </TableCell>
+                                            <TableCell style={{ width: 160, }} align='center'>
                                                 {row.studentName}
                                             </TableCell>
-                                            <TableCell style={{ width: 160, }} align="right">
+                                            <TableCell style={{ width: 160, }} align="center">
                                                 {row.studentWeight}
                                             </TableCell>
-                                            <TableCell style={{ width: 160 }} align="right">
+                                            <TableCell style={{ width: 160 }} align="center">
                                                 {row.studentPushUp}
                                             </TableCell>
-                                            <TableCell style={{ width: 160 }} align="right">
+                                            <TableCell style={{ width: 160 }} align="center">
                                                 {row.score}
                                             </TableCell>
-                                            <TableCell style={{ width: 160 }} align="right">
+                                            <TableCell style={{ width: 160 }} align="center">
                                                 <Edit onClick={() => handleFormEdit(row, key)} className='cursor-pointer' />
+                                            </TableCell>
+                                            <TableCell align="right">
+
                                             </TableCell>
                                         </TableRow>
                                     ))}
                                     {emptyRows > 0 && (
                                         <TableRow style={{ height: 53 * emptyRows }}>
-                                            <TableCell colSpan={6} />
+                                            <TableCell colSpan={7} />
                                         </TableRow>
                                     )}
                                 </TableBody>
@@ -230,7 +238,7 @@ export default function CustomPaginationActionsTable() {
                                     <TableRow >
                                         <TablePagination
                                             rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-                                            colSpan={5}
+                                            colSpan={7  }
                                             count={rows.length}
                                             rowsPerPage={rowsPerPage}
                                             page={page}
